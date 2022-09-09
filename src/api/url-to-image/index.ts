@@ -17,6 +17,10 @@ export default function handler(req: GatsbyFunctionRequest<ContactBody>, res: Ga
         `https://api.apiflash.com/v1/urltoimage?access_key=${process.env.APIFLASH_API_KEY}&url=${url}&response_type=image&thumbnail_width=320&wait_until=page_loaded`,
       );
 
+      console.log({
+        response
+      })
+
       const imageBlob = await response.buffer();
       const base64data = `data:image/jpeg;base64,${imageBlob.toString('base64')}`;
 
@@ -26,6 +30,7 @@ export default function handler(req: GatsbyFunctionRequest<ContactBody>, res: Ga
         },
       });
     } catch (e) {
+      console.error(e)
       handleException(e, req, res);
     }
   };
