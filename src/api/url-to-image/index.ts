@@ -15,9 +15,10 @@ export default function handler(req: GatsbyFunctionRequest<ContactBody>, res: Ga
 
       const response = await fetch(
         `https://api.apiflash.com/v1/urltoimage?access_key=${process.env.APIFLASH_API_KEY}&url=${url}&response_type=image&thumbnail_width=320&wait_until=page_loaded`,
-      );
+      )
 
       console.log({
+        url,
         response
       })
 
